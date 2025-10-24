@@ -22,6 +22,21 @@ fi
 
 temp=$(weather Lawrenceville | grep -i "Temperature" | grep -oE '[0-9]+')
 
+echo "Current temperature: ${temp}°F"
+
+# Check if temp was successfully retrieved
+if [ -z "$temp" ]; then
+    echo "Could not read temperature."
+else
+    if [ "$temp" -lt 40 ]; then
+        echo "It's cold."
+    elif [ "$temp" -lt 60 ]; then
+        echo "It's chilly."
+    elif [ "$temp" -lt 70 ]; then
+        echo "It's okay."
+    else
+        echo "It's hot."
+    fi
 echo "Current temperature: $temp°F"
 
 if [ -z $temp -lt 40 ]; then
